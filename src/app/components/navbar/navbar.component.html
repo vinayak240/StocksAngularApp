@@ -1,0 +1,42 @@
+<nav
+  style="background-color: #147246;"
+  class="navbar navbar-dark bg-dark navbar-expand-lg"
+>
+  <a id="logo" class="nav-item nav-link" routerLink="/">
+    <span style="color:#85bb65;">
+      <i
+        style="color:#85bb65;margin: 0px 2px; font-size: 26px"
+        class="fas fa-dollar-sign"
+      ></i></span
+    >tocks</a
+  >
+
+  <div
+    class="navbar-nav"
+    style="margin-right: 20px; margin-left: auto"
+    *ngIf="token.getIsAuthenticated()"
+  >
+    <a
+      class="nav-item nav-link float-right"
+      href="#"
+      (click)="logout()"
+      style="font-weight: 600; font-size: 1.1rem;color: white; background-color:#85BB65; border-radius: 5px"
+      >Logout</a
+    >
+  </div>
+
+  <!-- <ng-template #login>
+    <div
+      style="margin-right: 20px; margin-left: auto"
+      class="navbar-nav nav-item"
+    >
+      <a
+        style="font-weight: 600; font-size: 1.1rem;color: white"
+        class="nav-link"
+        routerLink="/login"
+      >
+        Login</a
+      >
+    </div>
+  </ng-template> -->
+</nav>

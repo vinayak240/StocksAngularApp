@@ -1,0 +1,126 @@
+<div class="mb-5 my-card">
+  <h2 class="my-card-title mb-3">
+    Add IPO
+  </h2>
+  <div>
+    <div class="row m-2">
+      <div
+        class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+      >
+        Company Code
+      </div>
+      <div class="col-sm-9 d-flex justify-content-start align-items-center">
+        <input
+          class="input-field"
+          type="text"
+          name="companyCode"
+          [(ngModel)]="ipoObj.companyCode"
+        />
+      </div>
+    </div>
+
+    <div class="row m-2">
+      <div
+        class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+      >
+        Company Name
+      </div>
+      <div class="col-sm-9 d-flex justify-content-start align-items-center">
+        <input
+          class="input-field"
+          type="text"
+          name="companyName"
+          [(ngModel)]="ipoObj.companyName"
+        />
+      </div>
+    </div>
+
+    <div class="row m-2">
+      <div
+        class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+      >
+        Total Shares
+      </div>
+      <div class="col-sm-9 d-flex justify-content-start align-items-center">
+        <input
+          class="input-field"
+          type="number"
+          name="totalShares"
+          [(ngModel)]="ipoObj.totalShares"
+        />
+      </div>
+    </div>
+
+    <div class="row m-2">
+      <div
+        class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+      >
+        Price Per Shares
+      </div>
+      <div class="col-sm-9 d-flex justify-content-start align-items-center">
+        <input
+          class="input-field"
+          type="number"
+          name="pricePerShare"
+          [(ngModel)]="ipoObj.pricePerShare"
+        />
+      </div>
+    </div>
+
+    <div class="row m-2">
+      <div
+        class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+      >
+        Stock Exchange
+      </div>
+      <div class="col-sm-9 d-flex justify-content-start align-items-center">
+        <input
+          class="input-field"
+          type="text"
+          name="stockExchange"
+          [(ngModel)]="ipoObj.stockExchange"
+        />
+      </div>
+    </div>
+
+    <div class="row m-2">
+      <div
+        class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+      >
+        Remarks
+      </div>
+      <div class="col-sm-9 d-flex justify-content-start align-items-center">
+        <textarea
+          class="input-field"
+          type="text"
+          name="remarks"
+          [(ngModel)]="ipoObj.remarks"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="row m-2">
+      <div
+        class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+      >
+        Open Date
+      </div>
+      <div class="col-sm-9 d-flex justify-content-start align-items-center">
+        <input
+          class="input-field"
+          type="datetime-local"
+          name="openDate"
+          [(ngModel)]="ipoObj.openDate"
+        />
+      </div>
+    </div>
+    <div style="display:flex;justify-content: flex-end;align-items: center;">
+      <div>
+        <button (click)="addIpo()" class="btn-twitter">
+          <i class="fas fa-plus"></i>
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

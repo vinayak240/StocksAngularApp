@@ -1,0 +1,380 @@
+<div>
+  <div class="all-modals">
+    <!-- Modal -->
+    <div
+      style="border: none; border-radius: 16px;"
+      class="modal fade in"
+      id="addCompany"
+      tabindex="-1"
+    >
+      <div
+        style="border: none; border-radius: 16px;"
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Company</h5>
+          </div>
+          <div class="modal-body">
+            <div>
+              <input
+                style="margin: 9px;width: 90%;"
+                class="input-field"
+                placeholder="Company code"
+                type="text"
+                name="companyCode"
+                [(ngModel)]="ComObj.companyCode"
+              />
+            </div>
+            <div>
+              <input
+                style="margin: 9px;width: 90%;"
+                class="input-field"
+                placeholder="Company name"
+                type="text"
+                name="name"
+                [(ngModel)]="ComObj.name"
+              />
+            </div>
+            <div>
+              <input
+                style="margin: 9px;width: 90%;"
+                class="input-field"
+                placeholder="Company CEO's name"
+                type="text"
+                name="ceo"
+                [(ngModel)]="ComObj.ceo"
+              />
+            </div>
+            <div>
+              <input
+                style="margin: 9px;width: 90%;"
+                class="input-field"
+                placeholder="Company Board Of Directors name"
+                type="text"
+                name="boardOfDirectors"
+                [(ngModel)]="ComObj.boardOfDirectors"
+              />
+            </div>
+            <div>
+              <input
+                style="margin: 9px;width: 90%;"
+                class="input-field"
+                placeholder="Company's turnover"
+                type="number"
+                name="turnover"
+                [(ngModel)]="ComObj.turnover"
+              />
+            </div>
+            <div>
+              <input
+                style="margin: 9px;width: 90%;"
+                class="input-field"
+                placeholder="Company's description"
+                type="text"
+                name="description"
+                [(ngModel)]="ComObj.description"
+              />
+            </div>
+            <div>
+              <select
+                class="input-field"
+                style="font-weight: 500;margin: 9px;width: 90%;"
+                name="stockExchanges"
+                [(ngModel)]="ComObj.stockExchanges"
+                multiple
+              >
+                <option
+                  *ngFor="let exchange of exchanges"
+                  value="{{ exchange.name }}"
+                  >{{ exchange.name }}</option
+                >
+              </select>
+            </div>
+            <div>
+              <select
+                style="margin: 14px 7px;width: 90%;"
+                class="input-field"
+                name="sectorName"
+                [(ngModel)]="ComObj.sectorName"
+              >
+                <option *ngFor="let sect of sectors" value="{{ sect.name }}">{{
+                  sect.name
+                }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              (click)="addCompany()"
+              data-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div style="width: 89%; margin: auto; margin-top: 25px;">
+      <div class="row">
+        <div style="display: flex;" class="col-md-8">
+          <input
+            placeholder="Search Companies..."
+            type="text"
+            name="filter"
+            class="input-field"
+            id="searchbox"
+            [(ngModel)]="searchText"
+            (input)="filter()"
+          />
+          <button
+            style="background-color: green; color: white"
+            class="btn-twitter ml-10px"
+          >
+            <i
+              style="margin: 0px 5px; font-size: 14px"
+              class="fas fa-search"
+            ></i>
+            Search
+          </button>
+        </div>
+
+        <div class="col-md-4">
+          <button class="btn-twitter" (click)="refresh()">
+            <i
+              style="margin: 0px 5px; font-size: 14px"
+              class="fas fa-sync-alt"
+            ></i>
+            Refresh
+          </button>
+          <a
+            class="btn-twitter"
+            data-toggle="modal"
+            href="#addCompany"
+            role="button"
+          >
+            <i style="margin: 0px 5px; font-size: 14px" class="fas fa-plus"></i>
+            Add
+          </a>
+        </div>
+      </div>
+      <hr style="margin: 18px 12px" />
+    </div>
+
+    <div *ngFor="let com of companies; let i = index" class="company my-card">
+      <h3 class="sub-title">
+        <img
+          style="width: 28px"
+          src="https://img.icons8.com/color/48/000000/verified-account.png"
+        />
+        {{ com.name }}
+        <span
+          style="background-color: rgb(226, 225, 225); color: rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+          >{{ com.companyCode }}</span
+        >
+        <button (click)="onChangeEdit(i)" class="btn-twitter">
+          <i style="margin: 0px 5px; font-size: 12px" class="fas fa-pen"></i>
+          Edit
+        </button>
+        <a
+          class="btn-twitter"
+          data-toggle="collapse"
+          href="{{ '#collapse' + com.companyCode }}"
+          role="button"
+        >
+          View
+        </a>
+      </h3>
+      <div class="collapse m-3" id="{{ 'collapse' + com.companyCode }}">
+        <div *ngIf="isEdit[i]" class="row m-2">
+          <div
+            class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+          >
+            Company Name
+          </div>
+          <div class="col-sm-9 d-flex justify-content-start align-items-center">
+            <input
+              class="input-field"
+              type="text"
+              name="name"
+              id="{{ 'cname' + com.companyCode }}"
+              value="{{ com.name }}"
+              [disabled]="!isEdit[i]"
+              [(ngModel)]="companies[i].name"
+            />
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div
+            class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+          >
+            CEO
+          </div>
+          <div class="col-sm-9 d-flex justify-content-start align-items-center">
+            <input
+              class="input-field"
+              type="text"
+              name="ceo"
+              id="{{ 'ceo' + com.companyCode }}"
+              value="{{ com.ceo }}"
+              [disabled]="!isEdit[i]"
+              [(ngModel)]="companies[i].ceo"
+            />
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div
+            class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+          >
+            Board Of Directors
+          </div>
+          <div class="col-sm-9 d-flex justify-content-start align-items-center">
+            <input
+              class="input-field"
+              type="text"
+              name="boardOfDirectors"
+              id="{{ 'bod' + com.companyCode }}"
+              value="{{ com.boardOfDirectors }}"
+              [disabled]="!isEdit[i]"
+              [(ngModel)]="companies[i].boardOfDirectors"
+            />
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div
+            class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+          >
+            Company Turnover
+          </div>
+          <div class="col-sm-9 d-flex justify-content-start align-items-center">
+            <input
+              class="input-field"
+              type="number"
+              name="turnover"
+              id="{{ 'turnover' + com.companyCode }}"
+              value="{{ com.turnover }}"
+              [disabled]="!isEdit[i]"
+              [(ngModel)]="companies[i].turnover"
+            />
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div
+            class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+          >
+            Company Description
+          </div>
+          <div class="col-sm-9 d-flex justify-content-start align-items-center">
+            <textarea
+              class="input-field"
+              type="text"
+              name="description"
+              id="{{ 'desc' + com.companyCode }}"
+              value="{{ com.description }}"
+              [disabled]="!isEdit[i]"
+              [(ngModel)]="companies[i].description"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div
+            class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+          >
+            Stock Exchanges
+          </div>
+          <div class="col-sm-9 d-flex justify-content-start align-items-center">
+            <select
+              class="input-field"
+              id="{{ 'exchange' + com.companyCode }}"
+              [disabled]="!isEdit[i]"
+              name="stockExchanges"
+              [(ngModel)]="companies[i].stockExchanges"
+              multiple
+            >
+              <option
+                *ngFor="let exchange of exchanges"
+                [selected]="com.stockExchanges.includes(exchange.name)"
+                value="{{ exchange.name }}"
+                >{{ exchange.name }}</option
+              >
+              <!-- <option
+                [selected]="com.stockExchanges.includes('BSE')"
+                value="BSE"
+                >BSE</option
+              >
+              <option
+                [selected]="com.stockExchanges.includes('NYSE')"
+                value="NYSE"
+                >NYSE</option
+              > -->
+            </select>
+          </div>
+        </div>
+
+        <div class="row m-2">
+          <div
+            class="input-label col-sm-3 d-flex justify-content-start align-items-center"
+          >
+            Sector
+          </div>
+          <div class="col-sm-9 d-flex justify-content-start align-items-center">
+            <select
+              class="input-field"
+              id="{{ 'desc' + com.companyCode }}"
+              [disabled]="!isEdit[i]"
+              name="sectorName"
+              [(ngModel)]="companies[i].sectorName"
+            >
+              <option
+                *ngFor="let sect of sectors"
+                [selected]="com.sectorName === sect.name"
+                value="{{ sect.name }}"
+                >{{ sect.name }}</option
+              >
+              <!-- <option
+                [selected]="com.sectorName === 'Technology'"
+                value="Technology"
+                >Technology</option
+              >
+              <option [selected]="com.sectorName === 'Health'" value="Health"
+                >Health</option
+              > -->
+            </select>
+          </div>
+        </div>
+
+        <div *ngIf="isEdit[i]" class="row m-2">
+          <div
+            class="col-xs-12 d-fex justify-content-end align-items-center w-100"
+          >
+            <div>
+              <button (click)="update(i)" class="btn-twitter">
+                <i
+                  style="margin: 0px 5px; font-size: 14px"
+                  class="fas fa-save"
+                ></i>
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

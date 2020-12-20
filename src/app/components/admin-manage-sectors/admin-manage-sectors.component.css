@@ -1,0 +1,62 @@
+.my-card {
+  border: 2px solid;
+  border-color: #e7edf3;
+  border-radius: 16px;
+  transition: 0.4s;
+  padding: 22px;
+  min-width: 280px;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+.my-card:hover {
+  border-color: #7cb2f1;
+}
+
+.my-card-title {
+  font-size: 1.17rem;
+  color: #122740;
+  text-align: center;
+  margin-bottom: 5px;
+  font-weight: bolder;
+  font-family: "Nunito Sans", sans-serif;
+}
+.sub-title {
+  font-size: 0.975rem;
+  color: #122740;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 10px 15px;
+  font-family: "Nunito Sans", sans-serif;
+  margin-bottom: 0px;
+}
+
+.btn-twitter {
+  background-color: #039be5;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  font-family: "Nunito Sans", sans-serif;
+  margin: auto 9px;
+}
+
+.btn-twitter:hover {
+  background-color: #0388ca;
+}
+
+.input-field {
+  font-family: "Nunito", sans-serif;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  width: 60%;
+  padding: 10px;
+  font-weight: bold;
+}
+.input-label {
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  padding: 10px 30px;
+}

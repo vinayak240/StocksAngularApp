@@ -1,0 +1,60 @@
+<div id="login-container">
+  <div id="wrapper">
+    <h3 id="heading">LOGIN</h3>
+    <div id="uname-div">
+      <input
+        type="text"
+        name="username"
+        id="uname"
+        placeholder="Username"
+        [(ngModel)]="username"
+        required
+      />
+    </div>
+    <div id="psswd-div">
+      <input
+        type="password"
+        name="password"
+        id="psswd"
+        placeholder="Password"
+        [(ngModel)]="password"
+        required
+      />
+    </div>
+    <div id="usertype-div">
+      <select
+        id="usertype"
+        name="userType"
+        [(ngModel)]="userType"
+        (change)="TypeChange()"
+      >
+        <option selected value="normal">Custumer</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+    <div id="btn-div">
+      <button
+        id="login-btn"
+        type="submit"
+        class="btn btn-success"
+        (click)="login()"
+      >
+        LOGIN
+      </button>
+    </div>
+    <div
+      style="margin-top: 10px;text-align: center;"
+      *ngIf="userType === 'normal'"
+    >
+      <span>
+        Dont Have an Account
+        <a
+          style="font-weight: 500; text-decoration: underline"
+          class="link"
+          routerLink="/register"
+          >Sign Up</a
+        ></span
+      >
+    </div>
+  </div>
+</div>

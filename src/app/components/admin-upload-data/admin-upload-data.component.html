@@ -1,0 +1,25 @@
+<div style="width: 85%" class="my-card">
+  <h3 class="my-card-title my-4">Upload Stock Prices</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <input
+        type="file"
+        id="upload"
+        style="width: 82%"
+        class="input-field"
+        name="upload"
+        multiple="false"
+        (change)="fileSelected($event)"
+      />
+      <button
+        type="button"
+        class="btn-twitter"
+        (click)="upload()"
+        [disabled]="true"
+      >
+        <i class="fas fa-upload mx-1"></i>
+        Upload
+      </button>
+    </div>
+  </div>
+</div>

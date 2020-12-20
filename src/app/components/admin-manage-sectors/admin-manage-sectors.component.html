@@ -1,0 +1,116 @@
+<div style="width: 91%; margin: auto; margin-top: 18px">
+  <div class="all-modals">
+    <div class="modal fade" id="addSector" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel2">Add Sector</h5>
+          </div>
+          <div class="modal-body">
+            <div>
+              <input
+                style="margin: 9px;width: 90%;font-weight: 500;"
+                class="input-field"
+                placeholder="Sector name"
+                type="text"
+                name="name"
+                [(ngModel)]="sectorObj.name"
+              />
+            </div>
+            <div>
+              <textarea
+                style="margin: 9px;width: 90%;font-weight: 500;"
+                class="input-field"
+                placeholder="Sector description"
+                type="text"
+                name="description"
+                [(ngModel)]="sectorObj.description"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              (click)="addSector()"
+              type="button"
+              data-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h5>
+    Sectors
+    <button
+      data-toggle="modal"
+      data-target="#addSector"
+      style="padding: 5px"
+      class="btn-twitter"
+    >
+      <i style="margin: 0px 5px; font-size: 14px;" class="fas fa-plus"></i>
+    </button>
+  </h5>
+  <hr style="margin: 9px 10px 18px 10px" />
+
+  <div class="row d-flex justify-content-start align-items-center">
+    <div *ngFor="let sect of sectors" class="col-md-6">
+      <div class="my-card">
+        <h4 class="my-card-title">
+          <i
+            style="margin: 0px 5px; font-size: 16px"
+            class="fas fa-sitemap"
+          ></i>
+          {{ sect.name }}
+        </h4>
+        <h6
+          style="background-color: #f7f4f4; padding: 15px; margin: 18px 0px; border-radius: 8px;"
+        >
+          {{ sect.description }}
+        </h6>
+        <div
+          style="border: 1px solid lightgray; border-radius: 8px; padding: 10px"
+        >
+          <a
+            data-toggle="collapse"
+            href="{{ '#collapse' + sect.id }}"
+            role="button"
+          >
+            Companies
+          </a>
+          <i
+            style="margin: 0px 5px; font-size: 14px; float: right;"
+            class="fas fa-sort-down"
+          ></i>
+          <div id="{{ 'collapse' + sect.id }}" class="collapse p-2">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Code</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let com of sect.companies; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ com.name }}</td>
+                  <td>{{ com.companyCode }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

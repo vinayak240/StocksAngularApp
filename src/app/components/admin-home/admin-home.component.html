@@ -1,0 +1,101 @@
+<div>
+  <div id="admin-header">
+    <div class="row">
+      <div
+        id="profile-info"
+        class="col-md-9 m-2 d-flex justify-content-start align-items-center"
+      >
+        <h6>
+          <img
+            style="width: 34px;"
+            src="https://img.icons8.com/fluent/48/000000/microsoft-admin.png"
+          />
+          <span
+            style="font-weight: bold; margin: 13px; padding: 6px; background-color: #f2eaea; border-radius: 6px;"
+            >/ Admin Dashboard</span
+          >
+        </h6>
+      </div>
+      <div id="profile-actions" class="col-md-3"></div>
+    </div>
+    <ul
+      class="d-flex justify-content-space-between align-items-center"
+      id="action-tabs"
+    >
+      <li
+        id="action-tab"
+        class="d-flex justify-content-center align-items-center"
+        (click)="setTab(1)"
+        [ngStyle]="tab === 1 && { 'border-bottom': '2px solid black' }"
+      >
+        <img
+          style="width: 20px; margin: 9px;"
+          src="https://img.icons8.com/android/24/000000/upload.png"
+        />
+        Upload Data
+      </li>
+      <li
+        id="action-tab"
+        class="d-flex justify-content-center align-items-center"
+        (click)="setTab(2)"
+        [ngStyle]="tab === 2 && { 'border-bottom': '2px solid black' }"
+      >
+        <img
+          style="width: 25px; margin: 9px;"
+          src="https://img.icons8.com/material-outlined/48/000000/new-company.png"
+        />
+        Manage Companies
+      </li>
+      <li
+        id="action-tab"
+        class="d-flex justify-content-center align-items-center"
+        (click)="setTab(3)"
+        [ngStyle]="tab === 3 && { 'border-bottom': '2px solid black' }"
+      >
+        <img
+          style="width: 25px; margin: 9px;"
+          src="https://img.icons8.com/wired/64/000000/stocks.png"
+        />
+        Manage Exchange
+      </li>
+      <li
+        id="action-tab"
+        class="d-flex justify-content-center align-items-center"
+        (click)="setTab(4)"
+        [ngStyle]="tab === 4 && { 'border-bottom': '2px solid black' }"
+      >
+        <img
+          style="width: 25px; margin: 9px;"
+          src="https://img.icons8.com/windows/32/000000/group-of-companies.png"
+        />
+        Manage Sectors
+      </li>
+      <li
+        id="action-tab"
+        class="d-flex justify-content-center align-items-center"
+        (click)="setTab(5)"
+        [ngStyle]="tab === 5 && { 'border-bottom': '2px solid black' }"
+      >
+        <img
+          style="width: 25px; margin: 9px;"
+          src="https://img.icons8.com/material-outlined/26/000000/details.png"
+        />
+        Manage IPO Details
+      </li>
+    </ul>
+  </div>
+  <div class="container-fluid" id="content" [ngSwitch]="tab">
+    <div *ngSwitchCase="1"><app-admin-upload-data></app-admin-upload-data></div>
+    <div *ngSwitchCase="2">
+      <app-admin-manage-companies></app-admin-manage-companies>
+    </div>
+    <div *ngSwitchCase="3">
+      <app-admin-manage-exchanges></app-admin-manage-exchanges>
+    </div>
+    <div *ngSwitchCase="4">
+      <app-admin-manage-sectors></app-admin-manage-sectors>
+    </div>
+    <div *ngSwitchCase="5"><app-admin-manage-ipos></app-admin-manage-ipos></div>
+    <div *ngSwitchDefault>output2</div>
+  </div>
+</div>

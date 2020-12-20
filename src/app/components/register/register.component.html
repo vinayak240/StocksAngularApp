@@ -1,0 +1,56 @@
+<div id="login-container">
+  <div id="wrapper">
+    <h3 id="heading">Sign Up</h3>
+    <div id="uname-div">
+      <input
+        type="text"
+        name="username"
+        id="uname"
+        placeholder="Username"
+        [(ngModel)]="username"
+        required
+      />
+    </div>
+    <div id="psswd-div">
+      <input
+        type="password"
+        name="password"
+        id="psswd"
+        placeholder="Password"
+        [(ngModel)]="password"
+        required
+      />
+    </div>
+    <div id="email-div">
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+        [(ngModel)]="email"
+        required
+      />
+    </div>
+    <div id="btn-div">
+      <button
+        id="signup-btn"
+        type="submit"
+        class="btn btn-success"
+        (click)="register()"
+      >
+        Sign Up
+      </button>
+    </div>
+    <div style="margin-top: 10px; text-align: center;">
+      <span
+        >Have an Account
+        <a
+          style="font-weight: 500; text-decoration: underline"
+          routerLink="/login"
+          >Log In</a
+        >
+        ?</span
+      >
+    </div>
+  </div>
+</div>
