@@ -15,7 +15,7 @@ export class AdminManageCompaniesComponent implements OnInit {
   ComObj: any;
   searchText = '';
   objList: any = [];
-  isLoading = true;
+  isLoading = false;
   sectors: any = [];
   exchanges: any = [];
 
@@ -37,6 +37,7 @@ export class AdminManageCompaniesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.cs.getCompanies().subscribe(
       data => {
         // console.log(data);
@@ -47,6 +48,7 @@ export class AdminManageCompaniesComponent implements OnInit {
             this.ss.getSectors().subscribe(
               data => {
                 this.sectors = data;
+                this.isLoading = false;
               },
               err => {
                 console.log('Error fetching Sectors');

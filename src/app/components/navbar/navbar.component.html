@@ -11,6 +11,25 @@
     >tocks</a
   >
 
+  <a
+    id="ipos"
+    style="color: white;"
+    *ngIf="token.getUserType() === 'normal'"
+    class="nav-item nav-link ml-5"
+    routerLink="/user-home"
+  >
+    IPOs
+  </a>
+  <a
+    id="compare"
+    style="color: white;"
+    *ngIf="token.getUserType() === 'normal'"
+    class="nav-item nav-link ml-2"
+    routerLink="/user-home/compare"
+  >
+    Compare
+  </a>
+
   <div
     class="navbar-nav"
     style="margin-right: 20px; margin-left: auto"

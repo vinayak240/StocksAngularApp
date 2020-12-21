@@ -1,51 +1,92 @@
 <div>
-  <div class="my-head-area">
+  <div
+    style="border-bottom: 1px solid lightgray; padding-bottom: 15px;margin-bottom: 18px"
+    class="my-head-area"
+  >
     <h2
       style="font-family: 'Balsamiq Sans', cursive;color: white"
       class="mb-3 text-center"
     ></h2>
+    <div class="row d-flex justify-content-center align-items-center">
+      <div style="display: flex; justify-content: center" class="col-md-10">
+        <input
+          style="width: 78%;"
+          placeholder="Search IPOs by company code..."
+          type="text"
+          name="filter"
+          class="input-field"
+          id="searchbox"
+          [(ngModel)]="searchText"
+        />
+        <button
+          style="background-color: green; color: white"
+          class="btn-twitter ml-10px"
+          (click)="search()"
+        >
+          <i style="margin: 0px 5px; font-size: 14px" class="fas fa-search"></i>
+          Search
+        </button>
+      </div>
+      <div style="display: flex; justify-content: center" class="col-md-2">
+        <button class="btn-twitter mr-5" (click)="refresh()">
+          <i
+            style="margin: 0px 5px; font-size: 14px"
+            class="fas fa-sync-alt"
+          ></i>
+          Refresh
+        </button>
+      </div>
+    </div>
   </div>
 
-  <div *ngFor="let ipo of ipoList" class="my-card">
-    <h5
-      style="display: flex; justify-content: space-between; align-items: center"
-      class="my-card-title"
-    >
-      <div>
-        <span>
-          {{ ipo.companyName }}
+  <div *ngIf="isLoading" class="d-flex justify-content-center m-5">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="!isLoading">
+    <div *ngFor="let ipo of ipoList" class="my-card">
+      <h5
+        style="display: flex; justify-content: space-between; align-items: center"
+        class="my-card-title"
+      >
+        <div>
+          <span>
+            {{ ipo.companyName }}
+
+            <span
+              style="background-color: rgb(226, 225, 225); color: rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+              >{{ ipo.companyCode }}
+            </span>
+          </span>
+        </div>
+
+        <div>
+          <span
+            style="float: right; color:  rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+          >
+            x {{ ipo.totalShares }}
+          </span>
 
           <span
-            style="background-color: rgb(226, 225, 225); color: rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
-            >{{ ipo.companyCode }}
+            style="float: right; background-color: rgb(26, 133, 26); color: white; border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+            >{{ ipo.pricePerShare }}
           </span>
-        </span>
-      </div>
-
-      <div>
-        <span
-          style="float: right; color:  rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+        </div>
+      </h5>
+      <div style="display: flex; justify-content: start; align-items: center">
+        <div
+          style=" color:  rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
         >
-          x {{ ipo.totalShares }}
-        </span>
+          <i class="far fa-calendar-alt"></i>
+          {{ ipo.openDate | date: "dd/MM/yyyy" }}
+        </div>
 
-        <span
-          style="float: right; background-color: rgb(26, 133, 26); color: white; border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
-          >{{ ipo.price }}
-        </span>
-      </div>
-    </h5>
-    <div style="display: flex; justify-content: start; align-items: center">
-      <div
-        style=" color:  rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
-      >
-        2019-03-03
-      </div>
-
-      <div
-        style="float: right; color:  rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
-      >
-        {{ ipo.pricePerShare }}
+        <div
+          style="float: right;background-color: rgb(236, 236, 140) ; color:  rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+        >
+          {{ ipo.stockExchange }}
+        </div>
       </div>
     </div>
   </div>

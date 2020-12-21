@@ -24,6 +24,10 @@ export class CompanyService {
     });
   }
 
+  getCompanyIpos(code: string) {
+    return this.http.get(`${API_URL.base_url_company}/${code}/ipos`);
+  }
+
   getCompanyStocksPrice(
     code: string,
     from: string,

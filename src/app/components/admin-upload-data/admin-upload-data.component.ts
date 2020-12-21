@@ -27,6 +27,8 @@ export class AdminUploadDataComponent implements OnInit {
   }
 
   upload() {
+    console.log('Excell Data', this.data);
+
     this.us.uploadStocks(this.data).subscribe(
       res => {
         alert('Upload Successful');

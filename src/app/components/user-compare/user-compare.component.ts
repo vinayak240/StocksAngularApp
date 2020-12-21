@@ -186,12 +186,14 @@ export class UserCompareComponent implements OnInit {
             .getCompanyStocksPrice(this.name2, this.from, this.to, this.period)
             .subscribe(
               data1 => {
+                let o2 = this.processData(this.name2, this.period, data1);
+                this.datasets[1] = { ...o2 };
                 this.isLoading = false;
 
                 console.log('Entity 2', data1);
-                this.datasets.push(
-                  this.processData(this.name2, this.period, data1)
-                );
+                // this.datasets.push(
+                //   this.processData(this.name2, this.period, data1)
+                // );
               },
               err => {
                 console.log('Error fetching Stocks for company');
@@ -203,12 +205,15 @@ export class UserCompareComponent implements OnInit {
             .getSectorStocksPrice(this.name2, this.from, this.to, this.period)
             .subscribe(
               data2 => {
+                let o3 = this.processData(this.name2, this.period, data2);
+                this.datasets[1] = { ...o3 };
+                // this.isLoading = false;
                 this.isLoading = false;
 
                 console.log('Entity 2', data2);
-                this.datasets.push(
-                  this.processData(this.name2, this.period, data2)
-                );
+                // this.datasets.push(
+                //   this.processData(this.name2, this.period, data2)
+                // );
               },
               err => {
                 console.log('Error fetching Stocks for sector');
