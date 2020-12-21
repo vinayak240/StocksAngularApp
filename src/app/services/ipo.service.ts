@@ -11,4 +11,7 @@ export class IpoService {
   saveIpos(ipo: IPO) {
     return this.http.post(API_URL.base_url_ipo, ipo);
   }
+  getIpos() {
+    return this.http.get(API_URL.base_url_ipo);
+  }
 }

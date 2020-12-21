@@ -23,4 +23,15 @@ export class CompanyService {
       responseType: 'text'
     });
   }
+
+  getCompanyStocksPrice(
+    code: string,
+    from: string,
+    to: string,
+    period: string
+  ) {
+    return this.http.get(
+      `${API_URL.base_url_company}/${code}/stocks/${from}/${to}/${period}`
+    );
+  }
 }

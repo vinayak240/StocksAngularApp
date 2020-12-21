@@ -22,6 +22,16 @@ import { AdminManageExchangesComponent } from './components/admin-manage-exchang
 import { AdminManageIposComponent } from './components/admin-manage-ipos/admin-manage-ipos.component';
 import { IpoService } from './services/ipo.service';
 import { UploadService } from './services/upload.service';
+import { UserCompareComponent } from './components/user-compare/user-compare.component';
+import { ChartComponent } from './components/chart/chart.component';
+// import { ChartsModule } from 'ng2-charts';
+
+import { CommonModule } from '@angular/common';
+
+import * as PlotlyJS from 'plotly.js/dist/plotly.js';
+import { PlotlyModule } from 'angular-plotly.js';
+
+PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
@@ -35,9 +45,19 @@ import { UploadService } from './services/upload.service';
     AdminUploadDataComponent,
     AdminManageSectorsComponent,
     AdminManageExchangesComponent,
-    AdminManageIposComponent
+    AdminManageIposComponent,
+    UserCompareComponent,
+    ChartComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
+    PlotlyModule
+    // ChartsModule
+  ],
   providers: [
     AuthService,
     JwtService,

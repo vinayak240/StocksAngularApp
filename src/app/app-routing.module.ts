@@ -6,6 +6,7 @@ import { UserHomeComponent } from './components/user-home/user-home.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { OnlyAuthenticatedUsersGuard } from './RouteGuards/only-authenticated-users.guard';
 import { OnlyAdminUsersGuard } from './RouteGuards/only-admin-users.guard';
+import { UserCompareComponent } from './components/user-compare/user-compare.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -13,6 +14,11 @@ const routes: Routes = [
   {
     path: 'user-home',
     component: UserHomeComponent,
+    canActivate: [OnlyAuthenticatedUsersGuard]
+  },
+  {
+    path: 'user-home/compare',
+    component: UserCompareComponent,
     canActivate: [OnlyAuthenticatedUsersGuard]
   },
   {

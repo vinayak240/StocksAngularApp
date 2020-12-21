@@ -1,9 +1,10 @@
-.head-area {
-  background-color: blueviolet;
+.my-head-area {
+  background-color: #4f565e;
   width: 100%;
   margin: 0px;
-  height: 16%;
+  padding: 18px;
 }
+
 .my-card {
   border: 2px solid;
   border-color: #e7edf3;
@@ -19,30 +20,11 @@
   border-color: #7cb2f1;
 }
 
-.my-card-title {
-  font-size: 1.17rem;
-  color: #122740;
-  text-align: center;
-  margin-bottom: 5px;
-  font-weight: bolder;
-  font-family: "Nunito Sans", sans-serif;
-}
-.sub-title {
-  font-size: 0.975rem;
-  color: #122740;
-  border-radius: 5px;
-  font-weight: bold;
-  padding: 10px 15px;
-  font-family: "Nunito Sans", sans-serif;
-  margin-bottom: 0px;
-}
-
 .btn-twitter {
   background-color: #039be5;
   border-radius: 8px;
   color: white;
   font-weight: bold;
-  float: right;
   border: none;
   padding: 10px;
   font-family: "Nunito Sans", sans-serif;
@@ -57,10 +39,11 @@
   font-family: "Nunito", sans-serif;
   background-color: #ffffff;
   border-radius: 5px;
-  border: 1px solid lightgray;
-  width: 60%;
+  border: none;
+  width: 80%;
   padding: 10px;
   font-weight: 500;
+  box-shadow: 2px 2px 2px black;
 }
 .input-label {
   font-family: "Nunito", sans-serif;

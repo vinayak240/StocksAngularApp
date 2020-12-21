@@ -18,4 +18,13 @@ export class SectorServiceService {
   getSectorCompanies(name: string) {
     return this.http.get(`${API_URL.base_url_sector}/${name}/companies`);
   }
+  getSectorStocksPrice(name: string, from: string, to: string, period: string) {
+    // console.log(
+    //   `${API_URL.base_url_sector}/${name}/stocks/${from}/${to}/${period}`
+    // );
+
+    return this.http.get(
+      `${API_URL.base_url_sector}/${name}/stocks/${from}/${to}/${period}`
+    );
+  }
 }

@@ -1,0 +1,14 @@
+.my-card {
+  border: 2px solid;
+  border-color: #e7edf3;
+  border-radius: 16px;
+  transition: 0.4s;
+  padding: 22px;
+  min-width: 280px;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+.my-card:hover {
+  border-color: #7cb2f1;
+}

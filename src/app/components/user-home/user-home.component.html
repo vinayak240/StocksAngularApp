@@ -1,1 +1,52 @@
-<p>User Home works!</p>
+<div>
+  <div class="my-head-area">
+    <h2
+      style="font-family: 'Balsamiq Sans', cursive;color: white"
+      class="mb-3 text-center"
+    ></h2>
+  </div>
+
+  <div *ngFor="let ipo of ipoList" class="my-card">
+    <h5
+      style="display: flex; justify-content: space-between; align-items: center"
+      class="my-card-title"
+    >
+      <div>
+        <span>
+          {{ ipo.companyName }}
+
+          <span
+            style="background-color: rgb(226, 225, 225); color: rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+            >{{ ipo.companyCode }}
+          </span>
+        </span>
+      </div>
+
+      <div>
+        <span
+          style="float: right; color:  rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+        >
+          x {{ ipo.totalShares }}
+        </span>
+
+        <span
+          style="float: right; background-color: rgb(26, 133, 26); color: white; border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+          >{{ ipo.price }}
+        </span>
+      </div>
+    </h5>
+    <div style="display: flex; justify-content: start; align-items: center">
+      <div
+        style=" color:  rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+      >
+        2019-03-03
+      </div>
+
+      <div
+        style="float: right; color:  rgb(84, 96, 107); border-radius: 4px; padding: 4px 8px; margin: 3px 6px"
+      >
+        {{ ipo.pricePerShare }}
+      </div>
+    </div>
+  </div>
+</div>
