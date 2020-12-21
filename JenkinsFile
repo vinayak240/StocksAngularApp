@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Restore') {
+            steps {
+                bat 'npm install'
+            }
+        }
+         stage('Build') {
+            steps {
+                bat 'npm run ng -- build'
+            }
+        }
+         stage('Test') {
+            steps {
+                bat 'npm run ng -- test'
+            }
+        }
+    }
+}
